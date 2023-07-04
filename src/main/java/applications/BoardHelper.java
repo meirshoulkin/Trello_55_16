@@ -25,6 +25,7 @@ public class BoardHelper extends HelperBase{
     public void fillBoardForm(Board board) {
         type(By.xpath("//input[@data-testid='create-board-title-input']"), board.getName());
     }
+
     public void submitCreate() {
         click(By.xpath("//button[@data-testid='create-board-submit-button']"));
     }
@@ -32,6 +33,7 @@ public class BoardHelper extends HelperBase{
     public void pressBoard() {
         click(By.xpath("//p[@class='nNvJhnERHVQb9o']"));
     }
+
     //    public int counterBoards(){
 //        List<WebElement> boardList = wd.findElements(By.cssSelector(".boards-page-board-section-list-item"));
 //        return boardList.size();
@@ -40,6 +42,7 @@ public class BoardHelper extends HelperBase{
         List<WebElement> boardList = wd.findElements(locator);
         return boardList.size();
     }
+
     public String getTitle(){
         return wd.findElement(By.xpath("//h1[@class='HKTtBLwDyErB_o']")).getText();
     }
@@ -83,6 +86,7 @@ public class BoardHelper extends HelperBase{
         click(By.cssSelector("[class^='a72r81xglmtLCW']"));
 
     }
+
     public boolean waitForElementPresent(By locator, int timeOut){
         return new WebDriverWait(wd, timeOut)
                 .until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator)).size()>0;
@@ -96,19 +100,22 @@ public class BoardHelper extends HelperBase{
         return counterBoards(By.xpath("//li[@class='mlpxvZU4v4cMQN qUkRGnTnJDff85']"));
     }
 
-    public void boardNameModification(String name) {
+    public void boardNameModification(Board board) {
 
-        for (int i = 1; i < 11; i++) {
+
+//        for (int i = 1; i < 11; i++) {
+        for (int i = 1; i < NumberBoards(); i++) {
             String xp = "//ul[@class='boards-page-board-section-list']//li[" + i + "]";
             click(By.xpath(xp));
             waitForElementPresent(By.cssSelector(".hiRkezEUBG7ve6.uXhW3KBBr1jUsJ"), 10);
             WebElement el = wd.findElement(By.cssSelector(".hiRkezEUBG7ve6.uXhW3KBBr1jUsJ"));
-            new Actions(wd).moveToElement(el).click(el).sendKeys(name + Keys.ENTER).perform();
+            new Actions(wd).moveToElement(el).click(el).sendKeys(board.getName() + Keys.ENTER).perform();
             String title = wd.findElement(By.cssSelector(".hiRkezEUBG7ve6.uXhW3KBBr1jUsJ")).getText();
-            Assert.assertEquals(name, title);
+            Assert.assertEquals(board.getName(), title);
             click(By.cssSelector(".nNvJhnERHVQb9o"));
             pause(2000);
         }
+
 
     }
 }

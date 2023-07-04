@@ -9,6 +9,8 @@ public class ApplicationManager {
     WebDriver wd;
     UserHelper userHelper;
     BoardHelper boardHelper;
+    WorkSpaceHelper workSpaceHelper;
+
 
 
 
@@ -19,6 +21,8 @@ public class ApplicationManager {
         wd.navigate().to("https://trello.com/home");
         userHelper = new UserHelper(wd);
         boardHelper = new BoardHelper(wd);
+        workSpaceHelper = new WorkSpaceHelper(wd);
+
     }
 
     public void stop(){
@@ -31,5 +35,9 @@ public class ApplicationManager {
 
     public BoardHelper getBoardHelper() {
         return boardHelper;
+    }
+
+    public WorkSpaceHelper getWorkSpaceHelper() {
+        return workSpaceHelper;
     }
 }

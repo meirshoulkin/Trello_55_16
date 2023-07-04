@@ -12,10 +12,11 @@ public class BoardCreation extends TestBase{
     @BeforeMethod
     public void preConditions(){
         if(!app.getUserHelper().isElementPresent(By.xpath("//span[@class='DweEFaF5owOe02 V_PnoJ2AynVwLp G6CmOLx93OUZez']"))){
-            app.getUserHelper().openLoginForm();
-            app.getUserHelper().fillLoginForm(new User().withEmail("maxmayzel@gmail.com").withPassword("Rfrnec7_*"));
-            app.getUserHelper().submitLogIn();
-            app.getUserHelper().pause(3000);
+            app.getUserHelper().login();
+//            app.getUserHelper().openLoginForm();
+//            app.getUserHelper().fillLoginForm(new User().withEmail("maxmayzel@gmail.com").withPassword("Rfrnec7_*"));
+//            app.getUserHelper().submitLogIn();
+//            app.getUserHelper().pause(3000);
         }
     }
     @Test

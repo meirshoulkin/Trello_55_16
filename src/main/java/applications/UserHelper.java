@@ -27,7 +27,6 @@ public class UserHelper extends HelperBase {
     //    click(By.xpath("//span[text()='Log in']"));
         click(By.id("login-submit"));
     }
-
     public void fillEmailFied(User user) {
         type(By.xpath("//input[@id='user']"), user.getEmail());
         click(By.xpath("//input[@id='login']"));
@@ -53,5 +52,11 @@ public class UserHelper extends HelperBase {
         pause(3000);
         click(By.cssSelector(".hiRkezEUBG7ve6 uXhW3KBBr1jUsJ"));
         new Actions(wd).moveToElement(el).click(el).sendKeys("name" + Keys.ENTER).build().perform();
+    }
+    public void login(){
+        openLoginForm();
+        fillLoginForm(new User().withEmail("maxmayzel@gmail.com").withPassword("Rfrnec7_*"));
+        submitLogIn();
+        pause(3000);
     }
 }
