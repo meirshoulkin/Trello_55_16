@@ -1,19 +1,34 @@
 package tests;
 
 import applications.ApplicationManager;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.testng.annotations.*;
+
+import java.lang.reflect.Method;
 
 public class TestBase {
+    Logger logger = LoggerFactory.getLogger(TestBase.class);
+
     protected static ApplicationManager app = new ApplicationManager();
 
-    @BeforeClass
+@BeforeMethod(alwaysRun = true)
+    public void startLogger(Method method){
+       logger.info("Test start --->" + method.getName());
+    }
+    @BeforeSuite(alwaysRun = true)
     public void setUp(){
         app.init();
     }
 
-    @AfterClass
+    @AfterSuite(alwaysRun = true)
     public void tearDown(){
- //       app.stop();
+        app.stop();
     }
+    @AfterMethod(alwaysRun = true)
+    public void finishLogger(){
+    logger.info("===========================================");
+
+    }
+
 }

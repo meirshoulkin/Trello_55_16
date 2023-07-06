@@ -10,7 +10,6 @@ public class WorkSpaceHelper extends HelperBase{
     public WorkSpaceHelper(WebDriver wd) {
         super(wd);
     }
-
     public void pressPlusButton() {
         click(By.cssSelector(".vLNnCqZ9t8iYVd"));
         pause(2000);

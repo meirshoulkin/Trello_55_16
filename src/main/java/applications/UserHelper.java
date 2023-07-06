@@ -1,6 +1,7 @@
 package applications;
 
 import models.User;
+import models.UserLombok;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -11,7 +12,6 @@ public class UserHelper extends HelperBase {
     public UserHelper(WebDriver wd) {
         super(wd);
     }
-
     public void openLoginForm() {
         click(By.xpath("//a[@class='Buttonsstyles__Button-sc-1jwidxo-0 kTwZBr']"));
     }
@@ -22,11 +22,17 @@ public class UserHelper extends HelperBase {
         pause(3000);
         type(By.xpath("//input[@id='password']"), user.getPassword());
     }
-
+    public void fillLoginForm(UserLombok userLombok) {
+        type(By.xpath("//input[@id='user']"), userLombok.getEmail());
+        click(By.xpath("//input[@id='login']"));
+        pause(3000);
+        type(By.xpath("//input[@id='password']"), userLombok.getPassword());
+    }
     public void submitLogIn() {
     //    click(By.xpath("//span[text()='Log in']"));
         click(By.id("login-submit"));
     }
+
     public void fillEmailFied(User user) {
         type(By.xpath("//input[@id='user']"), user.getEmail());
         click(By.xpath("//input[@id='login']"));
@@ -58,5 +64,8 @@ public class UserHelper extends HelperBase {
         fillLoginForm(new User().withEmail("maxmayzel@gmail.com").withPassword("Rfrnec7_*"));
         submitLogIn();
         pause(3000);
+    }
+    public void back() {
+        wd.navigate().back();
     }
 }

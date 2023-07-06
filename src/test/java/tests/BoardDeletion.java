@@ -17,7 +17,6 @@ public class BoardDeletion extends TestBase {
 //            app.getUserHelper().pause(3000);
         }
     }
-
     @Test
     public void boardDeletionTest() {
         if (app.getBoardHelper().NumberBoards() >= 2) {
