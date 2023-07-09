@@ -22,5 +22,5 @@ public class WorkSpaceCreation extends TestBase{
         String title = app.getWorkSpaceHelper().getTitle();
         Assert.assertEquals(name,title);
     }
-    
+
 }
