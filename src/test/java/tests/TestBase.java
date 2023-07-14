@@ -16,6 +16,7 @@ public class TestBase {
     public void startLogger(Method method){
        logger.info("Test start --->" + method.getName());
     }
+
     @BeforeSuite(alwaysRun = true)
     public void setUp(){
         app.init();
@@ -25,6 +26,7 @@ public class TestBase {
     public void tearDown(){
         app.stop();
     }
+
     @AfterMethod(alwaysRun = true)
     public void finishLogger(){
     logger.info("===========================================");

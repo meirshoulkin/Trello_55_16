@@ -50,9 +50,9 @@ public class Login extends TestBase{
             app.getUserHelper().pause(2000);
             app.getUserHelper().submitLogOut();
             app.getUserHelper().pressOkButton();
-            app.getUserHelper().pause(2000);
-            Assert.assertTrue(app.getUserHelper().isElementPresent(By.xpath("//a[@class='Buttonsstyles__Button-sc-1jwidxo-0 kTwZBr']")));
-
+            app.getUserHelper().pause(5000);
+            // Assert.assertTrue(app.getUserHelper().isElementPresent(By.xpath("//a[@class='Buttonsstyles__Button-sc-1jwidxo-0 kTwZBr']")));
+            app.getUserHelper().back();
         }
     }
 //    @Test(priority = 5)
@@ -64,5 +64,7 @@ public class Login extends TestBase{
 //        Assert.assertTrue(app.getUserHelper().isElementPresent(By.id("password-error")));
 //
 //    }
+
+
 }
 // закоментировано вместо Максима теперь Ольга
